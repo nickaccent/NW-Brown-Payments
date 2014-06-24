@@ -28,7 +28,7 @@ component
 	function onApplicationStart() {
 		application.datasource = this.datasource;
 		application.backofficedatasource = this.backofficedatasource;
-		application.adminIPs = "81.110.137.141,82.71.19.52"; // list of ip addresses allow to access the system
+		application.adminIPs = "81.110.137.141,82.71.19.52,82.71.44.163,92.27.96.209,92.27.96.210,92.27.96.211,92.27.96.212,217.36.108.129,217.36.108.130,217.36.108.131,217.36.108.132,217.36.108.133,217.36.108.134,212.67.108.89,212.67.108.90,212.67.108.91,212.67.108.92,212.67.108.93,212.67.108.94"; // list of ip addresses allow to access the system
 		application.sessionDuration = 15; // how long (in minutes) until the session expires
 		
 		// reload all the orm stuff...
