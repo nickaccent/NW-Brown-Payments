@@ -1,0 +1,3 @@
+[submodule "wwwroot/cfc/accentdesign/sagepayconnector"]
+	path = wwwroot/cfc/accentdesign/sagepayconnector
+	url = https://serverman@bitbucket.org/accent/sagepay-connector-coldfusion.git

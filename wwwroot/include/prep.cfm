@@ -27,7 +27,8 @@
 		<cfset VARIABLES.PaymentRequest = entityLoadByPK("PaymentRequest", URL.PaymentRequestID) />
 		
 		<!--- load sagepay gateway for the appropriate account depending upon the system the original request came from --->
-		<cfset SagePay = new cfc.NWBrown.SagePayGateway(
+		<cfset SagePay = new cfc.AccentDesign.SagePayConnector.SagePayGateway(
+			AssociatedTableName="PaymentRequest",
 			Vendor=paymentRequest.getPaymentSession().getBackOfficeApplication().getVendorName(), 
 			Mode=(application.local ? 'test' : 'live'), 
 			datasource=application.datasource
