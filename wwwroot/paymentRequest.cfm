@@ -1,17 +1,10 @@
 <cfset paymentRequest = entityLoad("paymentRequest", URL.ID, true) />
-<cfset SagePay = new cfc.NWBrown.SagePayGateway(
+<cfset SagePay = new cfc.AccentDesign.SagePayConnector.SagePayGateway(
+	AssociatedTableName="PaymentRequest",
 	Vendor=paymentRequest.getPaymentSession().getBackOfficeApplication().getVendorName(), 
 	Mode=(application.local ? 'test' : 'live'), 
 	datasource=application.datasource
 ) />
-<!--- For simulating payments: --->
-<!---
-<cfset SagePay = new cfc.NWBrown.SagePayGateway(
-	Vendor="accent94b", 
-	Mode="simulator", 
-	datasource=application.datasource
-) />
---->
 
 <cfif isDefined('URL.debug')>
 	<cfdump var="#paymentRequest#" abort="true" />
