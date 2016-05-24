@@ -11,9 +11,9 @@
 	<cfproperty name="Premium" type="numeric"/>
 	<cfproperty name="Reference" type="string" maxlength="50" default="" />
 	<cfproperty name="StaffMember" type="string" maxlength="50" />
-	<cfproperty name="createdAt" type="date" />
-	<cfproperty name="backOfficeNotifyRequestTime" type="date" />
-	<cfproperty name="backOfficeNotifySuccessTime" type="date" />
+	<cfproperty name="createdAt" type="timestamp" />
+	<cfproperty name="backOfficeNotifyRequestTime" type="timestamp" />
+	<cfproperty name="backOfficeNotifySuccessTime" type="timestamp" />
 	<cfproperty name="IsCompleted" type="boolean" persistent="false" />
 	
 	<cfproperty name="BackOfficeApplication" fieldType="many-to-one" fkcolumn="BackOfficeApplicationID" cfc="BackOfficeApplication" />

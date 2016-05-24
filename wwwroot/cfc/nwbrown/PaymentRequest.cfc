@@ -8,8 +8,8 @@
 	<cfproperty name="Postcode" type="string" maxlength="100" />
 	<cfproperty name="Amount" type="numeric" />
 	
-	<cfproperty name="createdAt" type="date" />
-	<cfproperty name="updatedAt" type="date" />
+	<cfproperty name="createdAt" type="timestamp" />
+	<cfproperty name="updatedAt" type="timestamp" />
 	
 	<cfproperty name="HasBeenPaid" persistent="false" type="boolean" />
 	<cfproperty name="SuccessfulPayment" persistent="false" />
