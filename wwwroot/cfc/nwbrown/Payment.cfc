@@ -1,5 +1,5 @@
 <cfcomponent persistent="true">
-	<cfproperty name="ID" fieldType="id" generator="native" column="PaymentID" />
+	<cfproperty name="ID" fieldType="id" generator="native" column="PaymentID" type="numeric" ormType="int" />
 	<cfproperty name="PaymentStatus" fieldType="many-to-one" fkcolumn="PaymentStatusID" cfc="PaymentStatus" />
 	<cfproperty name="VPSProtocol" />
 	<cfproperty name="Status" />

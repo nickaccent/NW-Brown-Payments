@@ -1,5 +1,5 @@
 <cfcomponent persistent="true">
-	<cfproperty name="ID" column="PaymentRequestID" fieldType="id" generator="native" type="numeric" />
+	<cfproperty name="ID" column="PaymentRequestID" fieldType="id" generator="native" type="numeric" ormType="int" />
 	<cfproperty name="Payee" type="string" maxlength="100" />
 	<cfproperty name="Address1" type="string" maxlength="100" />
 	<cfproperty name="Address2" type="string" maxlength="100" />
@@ -8,8 +8,8 @@
 	<cfproperty name="Postcode" type="string" maxlength="100" />
 	<cfproperty name="Amount" type="numeric" />
 	
-	<cfproperty name="createdAt" type="date" />
-	<cfproperty name="updatedAt" type="date" />
+	<cfproperty name="createdAt" type="timestamp" />
+	<cfproperty name="updatedAt" type="timestamp" />
 	
 	<cfproperty name="HasBeenPaid" persistent="false" type="boolean" />
 	<cfproperty name="SuccessfulPayment" persistent="false" />
