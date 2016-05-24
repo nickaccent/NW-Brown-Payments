@@ -1,5 +1,5 @@
 <cfcomponent persistent="true">
-	<cfproperty name="ID" column="BackOfficeApplicationID" fieldType="id" />
+	<cfproperty name="ID" column="BackOfficeApplicationID" fieldType="id" type="string" ormType="string" />
 	<cfproperty name="Title" column="BackOfficeApplicationTitle" />
 	<cfproperty name="LiveDatasource" column="BackOfficeApplicationLiveDatasource" />
 	<cfproperty name="TestDatasource" column="BackOfficeApplicationTestDatasource" />

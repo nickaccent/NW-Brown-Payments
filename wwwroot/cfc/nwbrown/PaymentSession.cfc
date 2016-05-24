@@ -1,5 +1,5 @@
 <cfcomponent persistent="true">
-	<cfproperty name="ID" column="PaymentSessionID" fieldType="id" generator="native" type="numeric" />
+	<cfproperty name="ID" column="PaymentSessionID" fieldType="id" generator="native" type="numeric" ormType="int" />
 	<cfproperty name="WebPaymentID" type="numeric" />
 	<cfproperty name="TransactionDate" type="date" />
 	<cfproperty name="Payee" type="string" maxlength="100" />
