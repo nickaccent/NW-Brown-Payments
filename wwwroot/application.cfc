@@ -59,7 +59,7 @@ component
 		
 		// only allow access from NWB ip addresses (and accent)
 		if (!isLocal() AND !listFind(application.adminIPs, cgi.remote_addr) AND !isDefined('URL.paymentnotify')) {
-			throw('Access is not allowed from this IP address (#cgi.remote_addr#)');
+			throw(type="AccentDesign.AccessDenied", message='Access Denied', detail="Access is not allowed from this IP address (#cgi.remote_addr#)");
 		}
 	}
 	
