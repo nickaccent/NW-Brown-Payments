@@ -28,7 +28,7 @@ component
 	function onApplicationStart() {
 		application.datasource = this.datasource;
 		application.backofficedatasource = this.backofficedatasource;
-		application.adminIPs = "81.110.137.141,82.71.19.52,82.71.44.163,92.27.96.209,92.27.96.210,92.27.96.211,92.27.96.212,217.36.108.129,217.36.108.130,217.36.108.131,217.36.108.132,217.36.108.133,217.36.108.134,212.67.108.89,212.67.108.90,212.67.108.91,212.67.108.92,212.67.108.93,212.67.108.94"; // list of ip addresses allow to access the system
+		application.adminIPs = "81.110.137.138,81.110.137.141,82.71.19.52,82.71.44.163,92.27.96.209,92.27.96.210,92.27.96.211,92.27.96.212,217.36.108.129,217.36.108.130,217.36.108.131,217.36.108.132,217.36.108.133,217.36.108.134,212.67.108.89,212.67.108.90,212.67.108.91,212.67.108.92,212.67.108.93,212.67.108.94"; // list of ip addresses allow to access the system
 		application.sessionDuration = 15; // how long (in minutes) until the session expires
 		
 		// reload all the orm stuff...
@@ -44,8 +44,12 @@ component
 			return false;
 		}
 		
+		REQUEST.URLProtocol = (CGI.HTTPS is "on" ? 'https' : 'http');
+		REQUEST.js = { top = ArrayNew(1), bottom = ArrayNew(1) };
+    REQUEST.css = ArrayNew(1);
+		
 		// ensure https if live
-		if (1 eq 2 AND !isLocal() AND CGI.https neq "on") {
+		if (1 eq 2 AND !isLocal() AND REQUEST.URLProtocol neq "https") {
 			if (len(CGI.query_string)) {
 				location(url='https://' & CGI.HTTP_HOST & CGI.script_name & '?' & CGI.query_string, addtoken='no');
 			} else {
@@ -55,14 +59,8 @@ component
 		
 		// only allow access from NWB ip addresses (and accent)
 		if (!isLocal() AND !listFind(application.adminIPs, cgi.remote_addr) AND !isDefined('URL.paymentnotify')) {
-			throw('Access is not allowed from this IP address (#cgi.remote_addr#)');
+			throw(type="AccentDesign.AccessDenied", message='Access Denied', detail="Access is not allowed from this IP address (#cgi.remote_addr#)");
 		}
-		
-		REQUEST.URLProtocol = (CGI.HTTPS is "on" ? 'https' : 'http');
-		REQUEST.js = { top = ArrayNew(1), bottom = ArrayNew(1) };
-        REQUEST.css = ArrayNew(1);
-		
-		//ORMReload();
 	}
 	
 	function onSessionStart() {
