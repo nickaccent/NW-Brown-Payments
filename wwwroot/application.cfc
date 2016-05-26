@@ -44,8 +44,12 @@ component
 			return false;
 		}
 		
+		REQUEST.URLProtocol = (CGI.HTTPS is "on" ? 'https' : 'http');
+		REQUEST.js = { top = ArrayNew(1), bottom = ArrayNew(1) };
+    REQUEST.css = ArrayNew(1);
+		
 		// ensure https if live
-		if (1 eq 2 AND !isLocal() AND CGI.https neq "on") {
+		if (1 eq 2 AND !isLocal() AND REQUEST.URLProtocol neq "https") {
 			if (len(CGI.query_string)) {
 				location(url='https://' & CGI.HTTP_HOST & CGI.script_name & '?' & CGI.query_string, addtoken='no');
 			} else {
@@ -57,12 +61,6 @@ component
 		if (!isLocal() AND !listFind(application.adminIPs, cgi.remote_addr) AND !isDefined('URL.paymentnotify')) {
 			throw('Access is not allowed from this IP address (#cgi.remote_addr#)');
 		}
-		
-		REQUEST.URLProtocol = (CGI.HTTPS is "on" ? 'https' : 'http');
-		REQUEST.js = { top = ArrayNew(1), bottom = ArrayNew(1) };
-        REQUEST.css = ArrayNew(1);
-		
-		//ORMReload();
 	}
 	
 	function onSessionStart() {
